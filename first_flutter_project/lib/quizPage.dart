@@ -151,23 +151,24 @@ class _QuizzPageState extends State<QuizzPage> {
       title: const Text("Fin de la Partie!"),
       content: const Text("Vous avez repondu à toute les question"),
       actions: [
+        Image.asset("${img}"),
         Text(
           "Vous avez un score de ${score}/10",
           textAlign: TextAlign.center,
-          style: TextStyle(fontSize: 10),
+          style: TextStyle(fontSize: 20),
         ),
         Text(
           "${text}",
           textAlign: TextAlign.center,
-          style: TextStyle(fontSize: 10),
+          style: TextStyle(fontSize: 20),
         ),
-        Image.asset("${img}"),
+
         TextButton(
             onPressed: () {
               Navigator.of(context).pop();
               Navigator.of(context).pop();
             },
-            child: const Text("Go Home")
+            child: const Text("Go Home",textAlign: TextAlign.center,)
         ),
       ],
     );
