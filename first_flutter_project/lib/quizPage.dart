@@ -32,9 +32,9 @@ class _QuizzPageState extends State<QuizzPage> {
 
   List<Question> _questionList =[
 
-    Question(question: "L'île de Manhattan a été achetée aux Indiens algonquins pour 24dollar.",response:true,explanation:"en 1659 Steve Brandon Refugié Politique anglais décide d'acheté une partie des terre d'une tribut qui à finit par devenir newyork",imagePath:"img1.png")
+    Question(question: "L'île de Manhattan a été achetée aux Indiens algonquins pour 24dollar.",response:true,explanation:"En 1659 Steve Brandon Refugié Politique anglais décide d'acheté une partie des terre d'une tribut qui à finit par devenir newyork",imagePath:"img1.png")
     ,Question(question:"Quand on marche, 40% de notre poids est supporté par les gros orteils.",response:false,explanation:"Le poids du corp est suporté à 65% par notre talon et seulement 20% par le gros orteil et le reste equitablement entre les autre orteil",imagePath:"img3.png")
-    ,Question(question:"Le regime de corée du nord c'est inspiré des civilisation des pinguins",response:true,explanation:"L'ancien president Kim Jung Hill s'est inspiré du systeme hierarchique des pinguin pour avoir un meilleur controle",imagePath:"img2.png")
+    ,Question(question:"Le regime de corée du nord c'est inspiré des civilisation des pinguins",response:true,explanation:"L'ancien president Kim Jung Hill s'est inspiré du systeme hierarchique des pinguin pour avoir un meilleur controle sur sa population",imagePath:"img2.png")
     ,Question(question:"Les nains sont majoritaire au Cap Vert",response:true,explanation:"Oui, le capvert n'est pas appellé le paradis des nain pour rien, 54% de la population est nain, des manifestation contre l'exploitation des nain partout dans le monde sont tres souvent organisé dans pays.",imagePath:"img4.png")
     ,Question(question:"Les process d'investissement des banque americaine sont inspiré des location de sac de riz au burkina fasso",response:false,explanation:"Non MDR quel rapport",imagePath:"img5.png")
     ,Question(question:"La crise financiere liée au covid à été evité grace à la monté du prix du carburant",response:false,explanation:"Tous ceux qui pense ca sont complotiste rien avoir",imagePath:"img6.png")
@@ -115,9 +115,9 @@ class _QuizzPageState extends State<QuizzPage> {
 
   SimpleDialog customSimpleDialog( bool isCorrect) {
     String text = isCorrect ? "Bonne réponse" : "Mauvaise réponse" ;
-    String img = isCorrect ? "img/result-sup-5.gif" : "img/img.png" ;
+    String img = isCorrect ? "img/result-sup-5.gif" : "img/result-und-5.gif" ;
     return SimpleDialog(
-      title: Text("${text}"),
+      title: Text("${text}",textAlign: TextAlign.center,),
       elevation: 12,
       children: [
         const Divider(),
@@ -129,6 +129,7 @@ class _QuizzPageState extends State<QuizzPage> {
           style: TextStyle(fontSize: 20),
         ),
         SizedBox(height:30),
+        simpleDialogOption(text:"Question Suivante"),
       ],
     );
   }
@@ -136,8 +137,9 @@ class _QuizzPageState extends State<QuizzPage> {
   SimpleDialogOption simpleDialogOption({required String text}) {
     return SimpleDialogOption(
       onPressed: () {
+        Navigator.of(context).pop();
       },
-      child: Text(text),
+      child: Text(text,textAlign: TextAlign.center,style: TextStyle(fontSize: 20,color: Colors.blueAccent),),
     );
   }
 
@@ -195,7 +197,7 @@ class _QuizzPageState extends State<QuizzPage> {
               style: TextStyle(fontSize: 30),
             ),
             SizedBox(height:30),
-            Image.asset("img/${_questionList[numberquestion].imagePath.toString()}",
+            Image.asset("${_questionList[numberquestion].getImage()}",
                 width:350,
                 height: 350),
             SizedBox(height:50),
